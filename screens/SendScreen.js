@@ -1,11 +1,29 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useReducer } from 'react';
+import { Text, View, TextInput, Button } from 'react-native';
 
-export function SendScreen(){
-    return (
+
+const changeTextReducer = (_, text) => ({
+  text: text.toUpperCase(),
+  toolong: text.length > 10,
+});
+
+export function SendScreen({ navigation }) {
+  const [name, setName] = useReducer(changeTextReducer, { text: '' });
+  const [body, setBody] = useReducer(changeTextReducer, { text: '' });
+
+  return (
+    <>
       <View>
-        <Text>手紙を出す</Text>
-        <Text>とどけー</Text>
+        <Text>なまえ</Text>
+        <TextInput value={name.text} onChangeText={setName} />
       </View>
-    );
- }
+      <View>
+        <Text>てがみ</Text>
+        <TextInput value={body.text} onChangeText={setBody} multiline={true} numberOfLines={4} />
+      </View>
+      <View>
+        <Button title="てがみをだす" onPress={() => navigation.navigate('SendMovie', {name: name, body: body})} />
+      </View>
+    </>
+  );
+};
