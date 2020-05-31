@@ -1,11 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, SafeAreaView, StyleSheet } from 'react-native';
 
 export function SendMovieScreen({ route, navigation }){
     return (
-      <View>
+      <SafeAreaView style={ styles.container }>
         <Text>{route.params.name.text}</Text>
         <Text>{route.params.body.text}</Text>
-      </View>
+      </SafeAreaView>
     );
  }
+
+ const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});

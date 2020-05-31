@@ -5,6 +5,7 @@ import { HomeScreen } from './screens/HomeScreen';
 import { SendScreen } from './screens/SendScreen';
 import { SendMovieScreen } from './screens/SendMovieScreen';
 import { ReadScreen } from './screens/ReadScreen';
+import { ReactScreen } from './screens/ReactScreen';
  
 const Stack = createStackNavigator();
  
@@ -25,6 +26,7 @@ export default function App() {
         <Stack.Screen name="Send" component={SendScreen} options={{}} />
         <Stack.Screen name="SendMovie" component={SendMovieScreen} options={{}} />
         <Stack.Screen name="Read" component={ReadScreen} options={{}} />
+        <Stack.Screen name="React" component={ReactScreen} options={{}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

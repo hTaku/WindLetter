@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { Image, StyleSheet, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 
+
+var { width, height, scale } = Dimensions.get('window');
 export function HomeScreen({navigation}){
   return (
-    <View>
-      <Button title = "手紙を出す" onPress={() => navigation.navigate('Send')} />
-      <Button title = "手紙を読む" onPress={() => navigation.navigate('Read')} />
-    </View>
+    <ImageBackground source={require('../assets/images/back.png')} style={ styles.container } >
+      <TouchableOpacity onPress={() => navigation.navigate('Send')}>
+        <Image source={require('../assets/images/send.png')} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Read')}>
+        <Image source={require('../assets/images/read.png')} />
+      </TouchableOpacity>
+    </ImageBackground>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: -100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: height+100,
+  },
+});
